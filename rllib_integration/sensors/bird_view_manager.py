@@ -85,7 +85,9 @@ class MapImage(object):
         # TODO: The math.sqrt(2) is a patch due to the later rotation of this image
         self._pixels_per_meter = pixels_per_meter / math.sqrt(2)
 
+        # 返回一个路径点列表，每个车道之间都有一定的距离，并且在里面居中。
         waypoints = carla_map.generate_waypoints(2)
+
         margin = 50
         max_x = max(waypoints, key=lambda x: x.transform.location.x).transform.location.x + margin
         max_y = max(waypoints, key=lambda x: x.transform.location.y).transform.location.y + margin

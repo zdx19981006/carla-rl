@@ -82,7 +82,7 @@ class CarlaCore:
 
         if self.config["show_display"]:
             server_command = [
-                "{}/CarlaUE4.sh".format(os.environ["CARLA_ROOT"]),
+                "/opt/carla-simulator/CarlaUE4.sh",
                 "-windowed",
                 "-ResX={}".format(self.config["resolution_x"]),
                 "-ResY={}".format(self.config["resolution_y"]),
@@ -149,7 +149,7 @@ class CarlaCore:
         self.tm_port = self.server_port // 10 + self.server_port % 10
         while is_used(self.tm_port):
             print("Traffic manager's port " + str(self.tm_port) + " is already being used. Checking the next one")
-            tm_port += 1
+            self.tm_port += 1
         print("Traffic manager connected to port " + str(self.tm_port))
 
         self.traffic_manager = self.client.get_trafficmanager(self.tm_port)

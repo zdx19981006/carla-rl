@@ -7,6 +7,8 @@
 # For a copy, see <https://opensource.org/licenses/MIT>.
 
 import math
+
+import cv2
 import numpy as np
 from gym.spaces import Box, Discrete
 
@@ -143,6 +145,8 @@ class DQNExperiment(BaseExperiment):
         self.prev_image_1 = self.prev_image_0
         self.prev_image_0 = image
 
+        print(images.shape)
+
         return images, {}
 
     def get_speed(self, hero):
@@ -245,5 +249,5 @@ class DQNExperiment(BaseExperiment):
         if self.done_time_episode:
             print("Done max time")
             reward += 100
-
+        print("reward: " + str(reward))
         return reward
